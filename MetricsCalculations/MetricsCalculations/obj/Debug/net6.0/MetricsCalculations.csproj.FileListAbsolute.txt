@@ -1,0 +1,15 @@
+H:\Visual\MetricsCalculations\MetricsCalculations\bin\Debug\net6.0\MetricsCalculations.exe
+H:\Visual\MetricsCalculations\MetricsCalculations\bin\Debug\net6.0\MetricsCalculations.deps.json
+H:\Visual\MetricsCalculations\MetricsCalculations\bin\Debug\net6.0\MetricsCalculations.runtimeconfig.json
+H:\Visual\MetricsCalculations\MetricsCalculations\bin\Debug\net6.0\MetricsCalculations.dll
+H:\Visual\MetricsCalculations\MetricsCalculations\bin\Debug\net6.0\MetricsCalculations.pdb
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.csproj.AssemblyReference.cache
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.GeneratedMSBuildEditorConfig.editorconfig
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.AssemblyInfoInputs.cache
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.AssemblyInfo.cs
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.csproj.CoreCompileInputs.cache
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.dll
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\refint\MetricsCalculations.dll
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.pdb
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\MetricsCalculations.genruntimeconfig.cache
+H:\Visual\MetricsCalculations\MetricsCalculations\obj\Debug\net6.0\ref\MetricsCalculations.dll
