@@ -8,27 +8,18 @@ namespace MetricsCalculations
 {
     public class FamilyOfSets
     {
-        private List<List<int>> family;
-        
-        public List<List<int>> Family
+        private List<Set> family;
+        public List<Set> Family
         {
             get { return family; }
             set { family = value; }
         }
-
         public FamilyOfSets() { 
-            family = new List<List<int>>();
-        }
-
-        public FamilyOfSets(string path)
+            family = new List<Set>();
+        }     
+        public FamilyOfSets(List<Set> sets)
         {
-            family = new List<List<int>>();
-            Load(path);
-        }
-
-        private void Load(string path)
-        {
-            
+            family = sets;
         }
     }
 }

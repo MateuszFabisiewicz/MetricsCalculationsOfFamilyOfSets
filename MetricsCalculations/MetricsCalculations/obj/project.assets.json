@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\kraft\\.nuget\\packages\\": {},
+    "C:\\Users\\Mateusz\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Visual\\MetricsCalculations\\MetricsCalculations\\MetricsCalculations.csproj",
+      "projectUniqueName": "C:\\Users\\Mateusz\\Pulpit\\GitHub\\MetricsCalculationsOfFamilyOfSets\\MetricsCalculations\\MetricsCalculations\\MetricsCalculations.csproj",
       "projectName": "MetricsCalculations",
-      "projectPath": "H:\\Visual\\MetricsCalculations\\MetricsCalculations\\MetricsCalculations.csproj",
-      "packagesPath": "C:\\Users\\kraft\\.nuget\\packages\\",
-      "outputPath": "H:\\Visual\\MetricsCalculations\\MetricsCalculations\\obj\\",
+      "projectPath": "C:\\Users\\Mateusz\\Pulpit\\GitHub\\MetricsCalculationsOfFamilyOfSets\\MetricsCalculations\\MetricsCalculations\\MetricsCalculations.csproj",
+      "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mateusz\\Pulpit\\GitHub\\MetricsCalculationsOfFamilyOfSets\\MetricsCalculations\\MetricsCalculations\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kraft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mateusz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -33,7 +33,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
