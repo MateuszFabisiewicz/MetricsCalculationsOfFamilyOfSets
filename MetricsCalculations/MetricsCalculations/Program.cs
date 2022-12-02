@@ -8,7 +8,8 @@ namespace MetricsCalculations
     {
         public static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            ChooseAlgorithm();
+
             BitArray members = new BitArray(10);
             members[3] = true;
             PrintValues(members, members.Count);
@@ -24,6 +25,54 @@ namespace MetricsCalculations
                 }
             }
         }
+
+        public static void ChooseAlgorithm()
+        {
+            Console.WriteLine("************* Wyznaczanie odległości pomiędzy rodzinami zbiorów *************");
+            Console.WriteLine("Wybierz metrykę:");
+            Console.WriteLine("1. Metryka korzystająca z odległości Hamminga.");
+            Console.WriteLine("2. Metryka korzystająca z odległości Euklidesa.");
+            switch (Console.ReadKey().Key)
+            {
+                case ConsoleKey.D1:
+                    Console.WriteLine("\n1. Algorytm dokladny.");
+                    Console.WriteLine("2. Heurystyka.");
+                    switch (Console.ReadKey().Key)
+                    {
+                        case ConsoleKey.D1:
+                            // algorytm 1 dokładny
+                            break;
+                        case ConsoleKey.D2:
+                            // algorytm 1 heurystyka
+                            break;
+                        default:
+                            Console.WriteLine("\nNieprawidłowy symbol!");
+                            break;
+                    }
+                    break;
+                case ConsoleKey.D2:
+                    Console.WriteLine("\n1. Algorytm dokladny.");
+                    Console.WriteLine("2. Heurystyka.");
+                    switch (Console.ReadKey().Key)
+                    {
+                        case ConsoleKey.D1:
+                            // algorytm 2 dokładny
+                            break;
+                        case ConsoleKey.D2:
+                            // algorytm 2 heurystyka
+                            break;
+                        default:
+                            Console.WriteLine("\nNieprawidłowy symbol!");
+                            break;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("\nNieprawidłowy symbol!");
+                    break;
+            }
+            Console.WriteLine();
+        }
+
         public static void PrintValues(IEnumerable myList, int myWidth)
         {
             int i = myWidth;
