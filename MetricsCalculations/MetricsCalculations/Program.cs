@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace MetricsCalculations
@@ -8,22 +9,12 @@ namespace MetricsCalculations
     {
         public static void Main()
         {
-            ChooseAlgorithm();
-
-            BitArray members = new BitArray(10);
-            members[3] = true;
-            PrintValues(members, members.Count);
-            string path = Directory.GetCurrentDirectory();
-            Console.WriteLine("The current directory is {0}", path);
-            List<FamilyOfSets> list = Loader.Load("Data.txt");
-            foreach(FamilyOfSets family in list)
+            bool fileLoaded = false;
+            while(!fileLoaded)
             {
-                foreach(Set set in family.Family)
-                {
-                    PrintValues(set.Members, set.Members.Count);
-                    Console.WriteLine();
-                }
+                fileLoaded = LoadFile();
             }
+            ChooseAlgorithm();
         }
 
         public static void ChooseAlgorithm()
@@ -32,61 +23,92 @@ namespace MetricsCalculations
             Console.WriteLine("Wybierz metrykę:");
             Console.WriteLine("1. Metryka korzystająca z odległości Hamminga.");
             Console.WriteLine("2. Metryka korzystająca z odległości Euklidesa.");
-            switch (Console.ReadKey().Key)
+            while (true)
             {
-                case ConsoleKey.D1:
-                    Console.WriteLine("\n1. Algorytm dokladny.");
-                    Console.WriteLine("2. Heurystyka.");
-                    switch (Console.ReadKey().Key)
-                    {
-                        case ConsoleKey.D1:
-                            // algorytm 1 dokładny
-                            break;
-                        case ConsoleKey.D2:
-                            // algorytm 1 heurystyka
-                            break;
-                        default:
-                            Console.WriteLine("\nNieprawidłowy symbol!");
-                            break;
-                    }
-                    break;
-                case ConsoleKey.D2:
-                    Console.WriteLine("\n1. Algorytm dokladny.");
-                    Console.WriteLine("2. Heurystyka.");
-                    switch (Console.ReadKey().Key)
-                    {
-                        case ConsoleKey.D1:
-                            // algorytm 2 dokładny
-                            break;
-                        case ConsoleKey.D2:
-                            // algorytm 2 heurystyka
-                            break;
-                        default:
-                            Console.WriteLine("\nNieprawidłowy symbol!");
-                            break;
-                    }
-                    break;
-                default:
-                    Console.WriteLine("\nNieprawidłowy symbol!");
-                    break;
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.D1:
+                        Console.WriteLine("\n1. Algorytm dokladny.");
+                        Console.WriteLine("2. Heurystyka.");
+                        switch (Console.ReadKey().Key)
+                        {
+                            case ConsoleKey.D1:
+                                // algorytm 1 dokładny
+                                break;
+                            case ConsoleKey.D2:
+                                // algorytm 1 heurystyka
+                                break;
+                            default:
+                                Console.WriteLine("\nNieprawidłowy symbol!");
+                                break;
+                        }
+                        break;
+                    case ConsoleKey.D2:
+                        Console.WriteLine("\n1. Algorytm dokladny.");
+                        Console.WriteLine("2. Heurystyka.");
+                        switch (Console.ReadKey().Key)
+                        {
+                            case ConsoleKey.D1:
+                                // algorytm 2 dokładny
+                                break;
+                            case ConsoleKey.D2:
+                                // algorytm 2 heurystyka
+                                break;
+                            default:
+                                Console.WriteLine("\nNieprawidłowy symbol!");
+                                break;
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("\nNieprawidłowy symbol!");
+                        break;
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
+        }
+        public static bool LoadFile()
+        {
+            //BitArray members = new BitArray(10);
+            //members[3] = true;
+            //PrintValues(members, members.Count);
+            //string path = Directory.GetCurrentDirectory();
+            List<FamilyOfSets> list;
+            Console.WriteLine("Podaj ścieżkę do pliku.");
+            string zmienna = Console.ReadLine();
+            try
+            {
+                list = Loader.Load(zmienna);
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+            int i = 1;
+            foreach (FamilyOfSets family in list)
+            {
+                Console.WriteLine("Zbiór {0}:", i++);
+                foreach (Set set in family.Family)
+                {
+                    PrintValues(set.Members);
+                }
+                Console.Write('\n');
+            }
+            return true;
         }
 
-        public static void PrintValues(IEnumerable myList, int myWidth)
+        public static void PrintValues(BitArray myList)
         {
-            int i = myWidth;
-            foreach (Object obj in myList)
+            int numberOfWritten = 0;
+            for (int i = 0; i < myList.Count; i++)
             {
-                if (i <= 0)
+                if (myList[i])
                 {
-                    i = myWidth;
-                    Console.WriteLine();
+                    Console.Write("{0} ", i+1);
+                    numberOfWritten++;
                 }
-                i--;
-                Console.Write("{0,8}", obj);
             }
-            Console.WriteLine();
+            if(numberOfWritten == 0) Console.Write("0");
+            Console.Write('\n');
         }
     }
 }

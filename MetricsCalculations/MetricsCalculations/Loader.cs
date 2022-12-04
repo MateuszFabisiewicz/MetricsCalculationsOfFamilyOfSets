@@ -39,6 +39,7 @@ namespace MetricsCalculations
                 // Let the user know what went wrong.
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
+                throw new FileNotFoundException();
             }
             return list;
         }
