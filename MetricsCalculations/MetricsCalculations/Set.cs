@@ -50,5 +50,11 @@ namespace MetricsCalculations
                 members[number - 1] = true;
             }
         }
+        public Set(Set set)
+        {
+            members = new BitArray(set.members);
+            elements = new int[set.elements.Length];
+            set.elements.CopyTo(elements, 0);
+        }
     }
 }

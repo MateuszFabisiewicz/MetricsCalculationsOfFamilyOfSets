@@ -16,10 +16,10 @@ namespace MetricsCalculations
                 fileLoaded = LoadFile(out list);
             }
             
-            ChooseAlgorithm(list);
+            ChooseAlgorithm(in list);
         }
         
-        public static void ChooseAlgorithm(List<FamilyOfSets> list)
+        public static void ChooseAlgorithm(in List<FamilyOfSets> list)
         {
             Console.WriteLine("************* Wyznaczanie odległości pomiędzy rodzinami zbiorów *************");
             Console.WriteLine("Wybierz metrykę:");
@@ -36,7 +36,7 @@ namespace MetricsCalculations
                         {
                             case ConsoleKey.D1:
                                 // algorytm 1 dokładny
-                                Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactHamming(list));
+                                Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactHamming(in list));
                                 break;
                             case ConsoleKey.D2:
                                 // algorytm 1 heurystyka

@@ -9,10 +9,10 @@ namespace MetricsCalculations
 {
     public static class Algorithms
     {
-        public static int ExactHamming(List<FamilyOfSets> list)
+        public static int ExactHamming(in List<FamilyOfSets> list)
         {
-            FamilyOfSets firstFamily = list[0];
-            FamilyOfSets secondFamily = list[1];
+            FamilyOfSets firstFamily = new FamilyOfSets(list[0]);
+            FamilyOfSets secondFamily = new FamilyOfSets(list[1]);
             int additions = AddEmptySets(firstFamily, secondFamily);
             int difference = HungarianAlgorithm(firstFamily, secondFamily);
             return additions + difference;

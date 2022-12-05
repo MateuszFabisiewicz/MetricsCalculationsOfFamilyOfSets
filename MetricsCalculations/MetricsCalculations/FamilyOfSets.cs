@@ -21,5 +21,13 @@ namespace MetricsCalculations
         {
             family = sets;
         }
+        public FamilyOfSets(FamilyOfSets familyOfSets)
+        {
+            family = new List<Set>();
+            foreach(Set set in familyOfSets.family)
+            {
+                family.Add(new Set(set));
+            }
+        }
     }
 }
