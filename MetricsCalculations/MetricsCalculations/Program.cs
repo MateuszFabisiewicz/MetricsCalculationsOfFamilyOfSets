@@ -30,38 +30,10 @@ namespace MetricsCalculations
                 switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.D1:
-                        Console.WriteLine("\n1. Algorytm dokladny.");
-                        Console.WriteLine("2. Heurystyka.");
-                        switch (Console.ReadKey().Key)
-                        {
-                            case ConsoleKey.D1:
-                                // algorytm 1 dokładny
-                                Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactHamming(in list));
-                                break;
-                            case ConsoleKey.D2:
-                                // algorytm 1 heurystyka
-                                break;
-                            default:
-                                Console.WriteLine("\nNieprawidłowy symbol!");
-                                break;
-                        }
+                        Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactHamming(in list));
                         break;
                     case ConsoleKey.D2:
-                        Console.WriteLine("\n1. Algorytm dokladny.");
-                        Console.WriteLine("2. Heurystyka.");
-                        switch (Console.ReadKey().Key)
-                        {
-                            case ConsoleKey.D1:
-                                // algorytm 2 dokładny
-                                Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactEuclides(list));
-                                break;
-                            case ConsoleKey.D2:
-                                // algorytm 2 heurystyka
-                                break;
-                            default:
-                                Console.WriteLine("\nNieprawidłowy symbol!");
-                                break;
-                        }
+                        Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactEuclides(list));
                         break;
                     default:
                         Console.WriteLine("\nNieprawidłowy symbol!");
