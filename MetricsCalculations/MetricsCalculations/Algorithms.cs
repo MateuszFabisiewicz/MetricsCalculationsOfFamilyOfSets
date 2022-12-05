@@ -18,9 +18,23 @@ namespace MetricsCalculations
             return additions + difference;
         }
 
-        public static int ExactEuclides(List<FamilyOfSets> list)
+        public static float ExactEuclides(List<FamilyOfSets> list)
         {
-            return 3;
+            Set[] firstFamily = list[0].Family.ToArray();
+            Set[] secondFamily = list[1].Family.ToArray();
+
+            // sortujemy elementy zbiorów w rodzinach
+            SortSet(firstFamily);
+            SortSet(secondFamily);
+
+            // tworzymy ciągi z rodzin 
+            List<int> series1 = MakeSeries(firstFamily);
+            List<int> series2 = MakeSeries(secondFamily);
+            
+            // wyrównujemy ciągi
+            MakeSeriesSameLength(series1, series2);
+            
+            return EuklidesDistance(series1,series2);
         }
 
         public static int HeuristicEuclides(List<FamilyOfSets> list)
@@ -267,6 +281,181 @@ namespace MetricsCalculations
             for(int i = 0; i < length; i++)
                 result[i] = value;
             return result;
+        }
+
+        private static void SortSet(Set[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+                for (int j = 0; j < arr[i].Elements.Length; j++)
+                    MergeSortArray(arr[i].Elements, 0, arr[i].Elements.Length - 1);
+            MergeSortSet(arr, 0, arr.Length - 1);
+        }
+
+        private static void MergeSet(Set[] arr, int p, int q, int r)
+        {
+            int i, j, k;
+            int n1 = q - p + 1;
+            int n2 = r - q;
+            Set[] L = new Set[n1];
+            Set[] R = new Set[n2];
+            for (i = 0; i < n1; i++)
+            {
+                L[i] = arr[p + i];
+            }
+            for (j = 0; j < n2; j++)
+            {
+                R[j] = arr[q + 1 + j];
+            }
+            i = 0;
+            j = 0;
+            k = p;
+            while (i < n1 && j < n2)
+            {
+                if (CompareSets(L[i], R[j]) <= 0)
+                {
+                    arr[k] = L[i];
+                    i++;
+                }
+                else
+                {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+            while (i < n1)
+            {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+            while (j < n2)
+            {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+        private static void MergeSortSet(Set[] arr, int p, int r)
+        {
+            if (p < r)
+            {
+                int q = (p + r) / 2;
+                MergeSortSet(arr, p, q);
+                MergeSortSet(arr, q + 1, r);
+                MergeSet(arr, p, q, r);
+            }
+        }
+        private static void MergeArray(int[] arr, int p, int q, int r)
+        {
+            int i, j, k;
+            int n1 = q - p + 1;
+            int n2 = r - q;
+            int[] L = new int[n1];
+            int[] R = new int[n2];
+            for (i = 0; i < n1; i++)
+            {
+                L[i] = arr[p + i];
+            }
+            for (j = 0; j < n2; j++)
+            {
+                R[j] = arr[q + 1 + j];
+            }
+            i = 0;
+            j = 0;
+            k = p;
+            while (i < n1 && j < n2)
+            {
+                if (L[i] <= R[j])
+                {
+                    arr[k] = L[i];
+                    i++;
+                }
+                else
+                {
+                    arr[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+            while (i < n1)
+            {
+                arr[k] = L[i];
+                i++;
+                k++;
+            }
+            while (j < n2)
+            {
+                arr[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+        private static void MergeSortArray(int[] arr, int p, int r)
+        {
+            if (p < r)
+            {
+                int q = (p + r) / 2;
+                MergeSortArray(arr, p, q);
+                MergeSortArray(arr, q + 1, r);
+                MergeArray(arr, p, q, r);
+            }
+        }
+        private static int CompareSets(Set s1, Set s2)
+        {
+            if (s1.Elements.Length > s2.Elements.Length)
+                return 1;
+            else if (s1.Elements.Length == s2.Elements.Length)
+            {
+                for (int i = 0; i < s1.Elements.Length; i++)
+                {
+                    if (s1.Elements[i] > s2.Elements[i])
+                        return 1;
+                    else if (s1.Elements[i] < s2.Elements[i])
+                        return -1;
+                }
+                return 0;
+            }
+            return -1;
+        }
+
+        private static List<int> MakeSeries(Set[] family)
+        {
+            List<int> series = new List<int>();
+            for(int i=0; i<family.Length; i++)
+            {
+                for(int j = 0; j < family[i].Elements.Length; j++)
+                {
+                    series.Add(family[i].Elements[j]);
+                }
+                if(i != family.Length-1)
+                    series.Add(-2);
+            }
+            return series;
+        }
+
+        private static void MakeSeriesSameLength(List<int> series1, List<int> series2)
+        {
+            if(series1.Count == series2.Count) 
+                return;
+            while(series1.Count < series2.Count) 
+            {
+                series1.Add(0);
+            }
+            while (series2.Count < series1.Count)
+            {
+                series2.Add(0);
+            }
+        }
+
+        private static float EuklidesDistance(List<int> series1,List<int> series2)
+        {
+            double wynik = 0;
+            for(int i=0;i<series1.Count;i++)
+            {
+                wynik += Math.Pow(series1[i] - series2[i],2);
+            }
+            return (float)Math.Sqrt(wynik);
         }
     }
 }

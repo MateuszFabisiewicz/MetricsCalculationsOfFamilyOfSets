@@ -15,9 +15,11 @@ namespace MetricsCalculations
             {
                 fileLoaded = LoadFile(out list);
             }
+            Console.WriteLine(Algorithms.ExactEuclides(list));
+            
             ChooseAlgorithm(list);
         }
-
+        
         public static void ChooseAlgorithm(List<FamilyOfSets> list)
         {
             Console.WriteLine("************* Wyznaczanie odległości pomiędzy rodzinami zbiorów *************");
@@ -52,6 +54,7 @@ namespace MetricsCalculations
                         {
                             case ConsoleKey.D1:
                                 // algorytm 2 dokładny
+                                Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactEuclides(list));
                                 break;
                             case ConsoleKey.D2:
                                 // algorytm 2 heurystyka
@@ -76,7 +79,8 @@ namespace MetricsCalculations
             //string path = Directory.GetCurrentDirectory();
             list = new List<FamilyOfSets>();
             Console.WriteLine("Podaj ścieżkę do pliku.");
-            string zmienna = Console.ReadLine();
+            //string zmienna = Console.ReadLine();
+            string zmienna = "F:\\GitHub\\MetricsCalculationsOfFamilyOfSets\\MetricsCalculations\\Data2.txt";
             try
             {
                 list = Loader.Load(zmienna);
@@ -111,6 +115,14 @@ namespace MetricsCalculations
             }
             if(numberOfWritten == 0) Console.Write("0");
             Console.Write('\n');
+        }
+        public static void PrintValues(int[] array)
+        {
+            for(int i=0;i<array.Length;i++)
+            {
+                Console.WriteLine(array[i]);
+            }
+            Console.WriteLine("\n");
         }
     }
 }
