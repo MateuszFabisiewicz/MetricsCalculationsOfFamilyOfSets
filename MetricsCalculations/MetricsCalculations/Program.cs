@@ -10,14 +10,15 @@ namespace MetricsCalculations
         public static void Main()
         {
             bool fileLoaded = false;
+            List<FamilyOfSets> list = new List<FamilyOfSets>();
             while(!fileLoaded)
             {
-                fileLoaded = LoadFile();
+                fileLoaded = LoadFile(out list);
             }
-            ChooseAlgorithm();
+            ChooseAlgorithm(list);
         }
 
-        public static void ChooseAlgorithm()
+        public static void ChooseAlgorithm(List<FamilyOfSets> list)
         {
             Console.WriteLine("************* Wyznaczanie odległości pomiędzy rodzinami zbiorów *************");
             Console.WriteLine("Wybierz metrykę:");
@@ -34,6 +35,7 @@ namespace MetricsCalculations
                         {
                             case ConsoleKey.D1:
                                 // algorytm 1 dokładny
+                                Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactHamming(list));
                                 break;
                             case ConsoleKey.D2:
                                 // algorytm 1 heurystyka
@@ -66,13 +68,13 @@ namespace MetricsCalculations
                 Console.WriteLine();
             }
         }
-        public static bool LoadFile()
+        public static bool LoadFile(out List<FamilyOfSets> list)
         {
             //BitArray members = new BitArray(10);
             //members[3] = true;
             //PrintValues(members, members.Count);
             //string path = Directory.GetCurrentDirectory();
-            List<FamilyOfSets> list;
+            list = new List<FamilyOfSets>();
             Console.WriteLine("Podaj ścieżkę do pliku.");
             string zmienna = Console.ReadLine();
             try
