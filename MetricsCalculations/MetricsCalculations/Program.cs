@@ -88,7 +88,7 @@ namespace MetricsCalculations
             int i = 1;
             foreach (FamilyOfSets family in list)
             {
-                Console.WriteLine("Zbiór {0}:", i++);
+                Console.WriteLine("Rodzina {0}:", i++);
                 foreach (Set set in family.Family)
                 {
                     PrintValues(set.Members);
@@ -109,7 +109,7 @@ namespace MetricsCalculations
                     numberOfWritten++;
                 }
             }
-            if(numberOfWritten == 0) Console.Write("0");
+            if(numberOfWritten == 0) Console.Write("Zbiór pusty");
             Console.Write('\n');
         }
     }

@@ -9,7 +9,8 @@ namespace MetricsCalculations
 {
     public class Set
     {
-        // We assume that 0 can't be an element
+        // We assume that 0 can't be an element. Therefore, members[0] defines whether '1' is a part of the set,
+        // members[1] defines whether '2' is a part of the set, and so on.
         const int maxNumberInSet = 15;
         private BitArray members;
         public BitArray Members
