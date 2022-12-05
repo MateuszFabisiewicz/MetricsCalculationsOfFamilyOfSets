@@ -71,12 +71,13 @@ namespace MetricsCalculations
         // BitArray extension method to return Hamming distance between two bit arrays
         private static int HammingDistance(this BitArray arrayA, BitArray arrayB)
         {
-            return arrayA.Xor(arrayB).Sum();
+            BitArray tempA = new BitArray(arrayA);
+            return tempA.Xor(arrayB).Sum();
         }
 
         private static int HungarianAlgorithm(FamilyOfSets familyA, FamilyOfSets familyB)
         {
-            if(familyA.Family.Count != familyB.Family.Count)
+            if (familyA.Family.Count != familyB.Family.Count)
                 throw new ArgumentException("Nieprawidłowe wymiary rodzin!");
             int[] minimumsOfRows;
             int[] minimumsOfColumns;
@@ -94,7 +95,7 @@ namespace MetricsCalculations
             GetMinimumsOfRowsAndColumns(tableSetDistances, out minimumsOfRows, out minimumsOfColumns);
             InitialMatching(tableSetDistances, minimumsOfRows, minimumsOfColumns, ref matchA, ref matchB, ref maxMatch);
 
-            while(maxMatch != familyA.Family.Count)
+            while (maxMatch != familyA.Family.Count)
             {
                 int root = 0;
                 int x = 0;
@@ -156,7 +157,10 @@ namespace MetricsCalculations
                 }
             }
 
-            return matchA.Sum();
+            int result = 0;
+            for (int i = 0; i < matchA.Length; i++)
+                result += tableSetDistances[i, matchA[i]];
+            return result;
         }
 
         private static void UpdateMinimumsOfRowsAndColumns(bool[] s, bool[] t, ref int[] minimumsOfRows, ref int[] minimumsOfColumns, ref int[] slack)
@@ -242,10 +246,9 @@ namespace MetricsCalculations
             {
                 for (int column = 0; column < familyB.Family.Count; column++)
                 {
-                    table[row, column] = familyA.Family[row].Members.HammingDistance(familyB.Family[column].Members);
-                }
+                    table[row, column] = familyA.Family[row].Members.HammingDistance(familyB.Family[column].Members);                }
             }
-            
+
             return table;
         }
 
