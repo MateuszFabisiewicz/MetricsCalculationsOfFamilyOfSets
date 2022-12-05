@@ -25,6 +25,7 @@ namespace MetricsCalculations
             Console.WriteLine("Wybierz metrykę:");
             Console.WriteLine("1. Metryka korzystająca z odległości Hamminga.");
             Console.WriteLine("2. Metryka korzystająca z odległości Euklidesa.");
+            Console.WriteLine("3. Zakończ działanie programu");
             while (true)
             {
                 switch (Console.ReadKey().Key)
@@ -35,6 +36,8 @@ namespace MetricsCalculations
                     case ConsoleKey.D2:
                         Console.WriteLine("\n\nOdległość pomiędzy rodzinami: {0}", Algorithms.ExactEuclides(list));
                         break;
+                    case ConsoleKey.D3:
+                        return;
                     default:
                         Console.WriteLine("\nNieprawidłowy symbol!");
                         break;
