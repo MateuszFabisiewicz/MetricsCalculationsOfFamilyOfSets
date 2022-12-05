@@ -15,7 +15,6 @@ namespace MetricsCalculations
             {
                 fileLoaded = LoadFile(out list);
             }
-            Console.WriteLine(Algorithms.ExactEuclides(list));
             
             ChooseAlgorithm(list);
         }
@@ -79,8 +78,7 @@ namespace MetricsCalculations
             //string path = Directory.GetCurrentDirectory();
             list = new List<FamilyOfSets>();
             Console.WriteLine("Podaj ścieżkę do pliku.");
-            //string zmienna = Console.ReadLine();
-            string zmienna = "F:\\GitHub\\MetricsCalculationsOfFamilyOfSets\\MetricsCalculations\\Data2.txt";
+            string zmienna = Console.ReadLine();
             try
             {
                 list = Loader.Load(zmienna);

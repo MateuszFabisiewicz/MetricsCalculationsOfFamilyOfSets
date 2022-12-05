@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+MetricsCalculations/.vs/MetricsCalculations/DesignTimeBuild/.dtbcache.v2
+*.v2
+MetricsCalculations/.vs/MetricsCalculations/v17/.futdcache.v2
+MetricsCalculations/.vs/MetricsCalculations/DesignTimeBuild/.dtbcache.v2
+MetricsCalculations/.vs/MetricsCalculations/v17/.suo
